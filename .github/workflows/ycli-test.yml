@@ -9,5 +9,4 @@ jobs:
     
     steps:
       - run: curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
-      - run: source "$HOME/.bashrc"
-      - run: yc --help
+      - run: cat home/runner/.bashrc
