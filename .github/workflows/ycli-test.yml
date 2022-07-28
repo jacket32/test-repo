@@ -1,0 +1,12 @@
+name: Yandex Cloud Tests
+
+on: 
+  workflow_dispatch:
+
+jobs: 
+  set-up-yandex-cli:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - run: curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
+      - run: yc --help
