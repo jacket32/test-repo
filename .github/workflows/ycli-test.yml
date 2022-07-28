@@ -11,3 +11,5 @@ jobs:
       - run: curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
       - run: cat /home/runner/.bashrc
       - run: ls -F /home/runner/yandex-cloud/completion.bash.inc
+      - run: cat /home/runner/yandex-cloud/completion.bash.inc
+      
