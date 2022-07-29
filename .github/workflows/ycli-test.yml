@@ -19,7 +19,7 @@ jobs:
      - run: docker images
      
      # Push Docker image to yandex registry
-     - run: docker push cr.yandex/${{ secrets.YC_REGISTRY_ID }}/hello-world
+     - run: docker push cr.yandex/${{ secrets.YC_REGISTRY_ID }}/hello-world:${{ github.sha }}
      
      # Logout of docker and sa-account at the same time 
      - run: docker logout      
