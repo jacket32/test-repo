@@ -15,7 +15,7 @@ jobs:
      - run: cat key.json | docker login --username json_key --password-stdin cr.yandex
 
      # Build Docker image
-     - run: docker build . --file .Dockerfile --tag cr.yandex/${{ YC_REGISRY_ID }}/hello-world:${{ github.sha }}
+     - run: docker build . --file .Dockerfile --tag cr.yandex/${{ secrets.YC_REGISRY_ID }}/hello-world:${{ github.sha }}
      - run: docker images
      
      # Push Docker image to yandex registry
