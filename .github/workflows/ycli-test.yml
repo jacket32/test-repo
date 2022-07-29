@@ -8,6 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+     - run: touch key.json
+     - run: echo '${{ secrets.YC_SA_JSON_CREDENTIALS }}' >> key.json
      - run: cat key.json | docker login --username json_key --password-stdin cr.yandex
      - run: docker logout
       
