@@ -4,21 +4,21 @@ on:
   workflow_dispatch:
 
 jobs: 
-  build-and-push-image:
+  login-into-yandex-cr:
     runs-on: ubuntu-latest
     
     steps:
+     - uses: actions/checkout@v2
     # Login into Yandex CR
      - run: touch key.json
      - run: echo '${{ secrets.YC_SA_JSON_CREDENTIALS }}' >> key.json
      - run: cat key.json | docker login --username json_key --password-stdin cr.yandex
 
      # Build Docker image
-     - uses: actions/checkout@v2
-     - name: Build the docker image
      - run: docker build . --file .Dockerfile --tag hello-world:${{ github.sha }}
      - run: docker images
      
      # Push Docker image to yandex registry
-   
+     
+     # Logout of docker and close access through sa-account 
      - run: docker logout      
