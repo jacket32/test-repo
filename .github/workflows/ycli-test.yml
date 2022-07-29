@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-     - run: echo "::add-mask::${{ YC_SA_JSON_CREDENTIALS }}" | docker login \
+     - run: echo "${{ YC_SA_JSON_CREDENTIALS }}" | docker login \ 
             --username json_key \
             --password-stdin \
             cr.yandex
