@@ -8,8 +8,17 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+    # Login into Yandex CR
      - run: touch key.json
      - run: echo '${{ secrets.YC_SA_JSON_CREDENTIALS }}' >> key.json
      - run: cat key.json | docker login --username json_key --password-stdin cr.yandex
-     - run: docker logout
-      
+
+     # Build Docker image
+     - uses: actions/checkout@v2
+     - name: Build the docker image
+     - run: docker build . --file .Dockerfile --tag hello-world:${{ github.sha }}
+     - run: docker images
+     
+     # Push Docker image to yandex registry
+   
+     - run: docker logout      
