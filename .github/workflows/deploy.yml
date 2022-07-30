@@ -1,7 +1,7 @@
 name: Deploy
 
 on:
-  push:
+  pull_request:
     branches:
       - 'main'
 
@@ -15,16 +15,7 @@ jobs:
         with:
           host: ${{ secrets.DEPLOY_HOST }}
           username: ${{ secrets.DEPLOY_USERNAME }}
-          password: ${{ secrets.DEPLOY_PASSWORD }}
+          password: ${{ secrets.DEPLOY_KEY }}
           port: 22
           script: |
-            docker container stop ${{ secrets.DOCKER_NAME }}
-            docker container rm ${{ secrets.DOCKER_NAME}}
-            docker rmi ${{ secrets.DOCKER_LOGIN }}/${{ secrets.DOCKER_NAME }}:latest
-            docker system prune -f
-            docker run -d \
-                --network host \
-                --memory="300m" \
-                --env db_migration_mode="upgrade" \
-                --env DATABASE_DSN="postgres://postgres:sample@localhost:5432/postgres?sslmode=disable" \
-                --name ${{ secrets.DOCKER_NAME }} ${{ secrets.DOCKER_LOGIN }}/${{ secrets.DOCKER_NAME }}:latest
+            ls -al 
