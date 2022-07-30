@@ -11,13 +11,13 @@ jobs:
     steps:
      - uses: actions/checkout@v2
     # Login into Yandex CR
-     - run: touch key.json
-     - run: echo '${{ secrets.YC_SA_JSON_CREDENTIALS }}' >> key.json
-     - run: cat key.json | docker login --username json_key --password-stdin cr.yandex
+     - run: touch key.json \
+            echo '${{ secrets.YC_SA_JSON_CREDENTIALS }}' >> key.json \
+            cat key.json | docker login --username json_key --password-stdin cr.yandex
 
      # Build Docker image
-     - run: docker build . --file .Dockerfile --tag cr.yandex/${{ secrets.YC_REGISTRY_ID }}/hello-world:${{ github.sha }}
-     - run: docker images
+     - run: docker build . --file .Dockerfile --tag cr.yandex/${{ secrets.YC_REGISTRY_ID }}/hello-world:${{ github.sha }} \
+            docker images
      
      # Push Docker image to yandex registry
      - run: docker push cr.yandex/${{ secrets.YC_REGISTRY_ID }}/hello-world:${{ github.sha }}
