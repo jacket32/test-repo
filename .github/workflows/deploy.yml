@@ -11,8 +11,8 @@ jobs:
   Deploy:
     runs-on: ubuntu-latest
     steps:
-    - 
-        run: sudo echo 'CASignatureAlgorithms +ssh-rsa' >> /etc/ssh/sshd_config
+    -   run: sudo cat /etc/ssh/sshd_config
+    -   run: sudo echo 'CASignatureAlgorithms +ssh-rsa' >> /etc/ssh/sshd_config
     -
         name: Deploy
         uses: appleboy/ssh-action@master
