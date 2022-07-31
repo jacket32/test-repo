@@ -11,7 +11,7 @@ jobs:
   Deploy:
     runs-on: ubuntu-latest
     steps:
-    - run: ls .ssh/
+    - run: ls -al
     -
         name: Deploy
         uses: appleboy/ssh-action@master
