@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        sudo /bin/su -c "echo 'CASignatureAlgorithms +ssh-rsa' >> /etc/ssh/sshd_config'
+        sudo /bin/su -c "echo 'CASignatureAlgorithms +ssh-rsa' >> /etc/ssh/sshd_config"
         sudo cat /etc/ssh/sshd_config
     -
         name: Deploy
