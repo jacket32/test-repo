@@ -11,13 +11,6 @@ jobs:
   Deploy:
     runs-on: ubuntu-latest
     steps:
-    - run: |
-        mkdir .ssh
-        chmod 700 .ssh
-        mkdir .ssh/authorized_keys2
-        chmod 640 .ssh/authorized_keys2
-        touch .ssh/authorized_keys2/id_rsa.pub
-        echo ${{ secrets.DEPLOY_PUB_KEY }} >> .ssh/authorized_keys2/id_rsa.pub
     -
         name: Deploy
         uses: appleboy/ssh-action@master
