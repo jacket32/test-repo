@@ -20,4 +20,4 @@ jobs:
           password: ${{ secrets.DEPLOY_PASSWORD }}
           port: 22
           script: |
-            docker run docker run cr.yandex/${{ REGISTRY_ID }}/hello-world
+            docker run docker run cr.yandex/${{ secrets.REGISTRY_ID }}/hello-world
