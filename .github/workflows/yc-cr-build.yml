@@ -1,5 +1,5 @@
 
-name: Build-Testing (Yandex CR)
+name: Build
 
 on: 
   workflow_dispatch:
@@ -10,7 +10,7 @@ jobs:
     
     steps:
      - uses: actions/checkout@v2
-    # Login into Yandex CR
+     # Login into Yandex CR
      - run: |
             touch key.json
             echo '${{ secrets.YC_SA_JSON_CREDENTIALS }}' >> key.json
@@ -18,11 +18,11 @@ jobs:
 
      # Build Docker image
      - run: |
-            docker build . --file .Dockerfile --tag cr.yandex/${{ secrets.YC_REGISTRY_ID }}/hello-world:latest
+            docker build . --file .Dockerfile --tag cr.yandex/${{ secrets.YC_REGISTRY_ID }}/${{ DOCKER_NAME }}:latest
             docker images
      
      # Push Docker image to yandex registry
-     - run: docker push cr.yandex/${{ secrets.YC_REGISTRY_ID }}/hello-world:latest
+     - run: docker push cr.yandex/${{ secrets.YC_REGISTRY_ID }}/${{ DOCKER_NAME }}:latest
      
      # Logout of docker and sa-account at the same time 
      - run: docker logout 
