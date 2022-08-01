@@ -20,4 +20,7 @@ jobs:
           password: ${{ secrets.DEPLOY_PASSWORD }}
           port: 22
           script: |
-              docker run cr.yandex/${{ secrets.REGISTRY_ID }}/hello-world:6
+              docker rm cr.yandex/${{ secrets.REGISTRY_ID }}/${{ IMAGE_NAME }}:latest
+              docker rmi cr.yandex/${{ secrets.REGISTRY_ID }}/${{ IMAGE_NAME }}:latest
+              docker system prune -f
+              docker run cr.yandex/${{ secrets.REGISTRY_ID }}/${{ IMAGE_NAME }}:latest
