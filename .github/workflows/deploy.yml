@@ -11,18 +11,13 @@ jobs:
   Deploy:
     runs-on: ubuntu-latest
     steps:
-    - run: | 
-        mkdir .ssh
-        mkdir .ssh/authorized_keys
-        touch .ssh/authorized_keys/id_rsa.pub
-        echo '${{ secrets.DEPLOY_PUB_KEY }}' >> .ssh/authorized_keys/id_rsa.pub
     -
         name: Deploy
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.DEPLOY_HOST }}
           username: ${{ secrets.DEPLOY_USERNAME }}
-          password: ${{ secrets.DEPLOY_KEY }}
+          password: ${{ secrets.DEPLOY_PASSWORD }}
           port: 22
           script: |
             ls -al 
