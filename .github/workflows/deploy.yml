@@ -12,7 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: | 
-        sudo ls -al
+        mkdir .ssh
+        mkdir .ssh/authorized_keys
+        ls -Ral 
     -
         name: Deploy
         uses: appleboy/ssh-action@master
