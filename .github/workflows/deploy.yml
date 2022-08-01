@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: | 
-        sudo cat ~/.ssh/id_rsa
+        sudo cat $HOME/.ssh/id_rsa
     -
         name: Deploy
         uses: appleboy/ssh-action@master
