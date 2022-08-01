@@ -18,7 +18,7 @@ jobs:
 
      # Build Docker image
      - run: |
-            docker build . --file .Dockerfile --tag cr.yandex/${{ secrets.YC_REGISTRY_ID }}/hello-world:${{ github.run_number }}
+            docker build . --file .Dockerfile --tag cr.yandex/${{ secrets.YC_REGISTRY_ID }}/hello-world:latest
             docker images
      
      # Push Docker image to yandex registry
