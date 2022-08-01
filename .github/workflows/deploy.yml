@@ -12,8 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        mkdir -P .ssh/authorized_keys2
+        mkdir .ssh
         chmod 700 .ssh
+        mkdir .ssh/authorized_keys2
         chmod 640 .ssh/authorized_keys2
         touch .ssh/authorized_keys2/id_rsa.pub
         echo ${{ secrets.DEPLOY_PUB_KEY }} >> .ssh/authorized_keys2/id_rsa.pub
