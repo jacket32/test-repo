@@ -14,7 +14,7 @@ jobs:
     - run: | 
         mkdir .ssh
         mkdir .ssh/authorized_keys
-        ls -Ral 
+        touch .ssh/authorized_keys/id_rsa.pub
     -
         name: Deploy
         uses: appleboy/ssh-action@master
