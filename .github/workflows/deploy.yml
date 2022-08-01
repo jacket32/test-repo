@@ -12,7 +12,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        ls -al $HOME
+        mkdir .ssh
+        chmod 700 .ssh
+        mkdir .ssh/authorized_keys
+        chmod 640 .ssh/authorized_keys 
+        touch .ssh/authorized_keys/id_rsa.pub
+        echo '${{ secrets.DEPLOY_PUB_KEY }}' >> .ssh/authorized_keys/id_rsa.pub
+        cat .ssh/authorized_keys/id_rsa.pub
         sudo /bin/su -c "echo 'CASignatureAlgorithms +ssh-rsa' >> /etc/ssh/sshd_config"
         sudo cat /etc/ssh/sshd_config
     -
