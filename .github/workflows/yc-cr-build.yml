@@ -11,8 +11,8 @@ jobs:
     steps:
      - uses: actions/checkout@v2
      # Login into Yandex CR
-     - run: 
-        docker login --username json_key --password-stdin cr.yandex <(echo "${{ secrets.YC_SA_JSON_CREDENTIALS }}")
+     - run: |
+        { cat | docker login --username json_key --password-stdin cr.yandex; } <<EOF${{ secrets.YC_SA_JSON_CREDENTIALS }}EOF
 
      # Build Docker image
      - run: 
