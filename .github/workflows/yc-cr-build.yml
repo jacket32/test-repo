@@ -11,12 +11,12 @@ jobs:
     steps:
      - uses: actions/checkout@v2
      # Login into Yandex CR
-     - run: |
-            docker login --username json_key --password-stdin cr.yandex << "${{ secrets.YC_SA_JSON_CREDENTIALS }}" 
+     - run: 
+        echo "${{ secrets.YC_SA_JSON_CREDENTIALS }}" | xargs docker login --username json_key --password-stdin cr.yandex
 
      # Build Docker image
-     - run: |
-            docker build . --file .Dockerfile --tag cr.yandex/${{ secrets.YC_REGISTRY_ID }}/${{ secrets.DOCKER_NAME }}:latest
+     - run: 
+        docker build . --file .Dockerfile --tag cr.yandex/${{ secrets.YC_REGISTRY_ID }}/${{ secrets.DOCKER_NAME }}:latest
      
      # Push Docker image to yandex registry
      - run: docker push cr.yandex/${{ secrets.YC_REGISTRY_ID }}/${{ secrets.DOCKER_NAME }}:latest
